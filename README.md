@@ -1,6 +1,6 @@
-# Panduan Instalasi & Teknologi Proyek (React JS)
+# Panduan Instalasi & Teknologi Proyek (React JS + Yarn)
 
-Dokumen ini berisi panduan teknis untuk membuat aplikasi baru dengan teknologi yang sama dengan sistem ini.
+Dokumen ini berisi panduan teknis untuk membuat aplikasi baru menggunakan **Yarn** sebagai package manager, sesuai dengan sistem yang sekarang.
 
 ---
 
@@ -9,70 +9,67 @@ Aplikasi ini menggunakan stack **React JS** yang modern dengan konfigurasi sebag
 *   **Framework**: React JS (v18)
 *   **Bahasa**: TypeScript (File `.tsx`)
 *   **Build Tool**: Vite (Sangat cepat untuk development)
+*   **Package Manager**: **Yarn**
 *   **Platform Mobile**: Capacitor (Hybrid - mengubah web ke Android/iOS)
 
 ---
 
-## 2. Langkah-Langkah Instalasi (Step-by-Step)
+## 2. Langkah-Langkah Instalasi Menggunakan Yarn
 
 ### Step 1: Membuat Proyek Base
-Buka terminal dan jalankan perintah berikut untuk membuat proyek dengan template React + TypeScript:
+Buka terminal dan jalankan perintah berikut:
 ```bash
-npm create vite@latest nama-aplikasi-baru -- --template react-ts
+yarn create vite nama-aplikasi-baru --template react-ts
 cd nama-aplikasi-baru
+yarn install
 ```
 
 ### Step 2: Install Library UI & Styling
-Untuk tampilan menggunakan Mantine UI (v6) dan Tailwind CSS:
 ```bash
-# Install Mantine UI & Emotion (CSS-in-JS)
-npm install @mantine/core@6 @mantine/hooks@6 @mantine/form@6 @mantine/notifications@6 @emotion/react
+# Install Mantine UI & Emotion
+yarn add @mantine/core@6 @mantine/hooks@6 @mantine/form@6 @mantine/notifications@6 @emotion/react
 
 # Install & Init Tailwind CSS
-npm install -D tailwindcss postcss autoprefixer
-npx tailwindcss init -p
+yarn add -D tailwindcss postcss autoprefixer
+yarn tailwindcss init -p
 ```
 
 ### Step 3: Install Library Logika & API
-Untuk menangani navigasi, pemanggilan API, dan animasi:
 ```bash
-# React Router (Navigasi), React Query (API Management), Axios (HTTP Client)
-npm install @tanstack/react-query axios react-router-dom
+# Navigasi, API Management, & HTTP Client
+yarn add @tanstack/react-query axios react-router-dom
 
-# Framer Motion (Animasi) & Dayjs (Format Tanggal)
-npm install framer-motion dayjs
+# Animasi & Utilitas Tanggal
+yarn add framer-motion dayjs
 ```
 
 ### Step 4: Install Plugin Mobile (Capacitor)
-Jika aplikasi ini ingin dijadikan aplikasi Android atau iOS:
 ```bash
-# Install Core Capacitor
-npm install @capacitor/core @capacitor/cli @capacitor/android
-
-# Inisialisasi Capacitor
-npx cap init
+# Install & Inisialisasi Capacitor
+yarn add @capacitor/core @capacitor/cli @capacitor/android
+yarn cap init
 ```
 
 ---
 
 ## 3. Struktur Folder Rekomendasi
-Agar sama dengan sistem yang sekarang, gunakan struktur folder seperti ini di dalam folder `src/`:
-*   `features/` : Tempat menyimpan logika per fitur (Contoh: Login, Absensi, Profile).
-*   `components/` : Tempat komponen yang bisa dipakai berulang kali (Button, Navbar).
-*   `lib/` : Tempat file konfigurasi (Axios instance, Query Client).
-*   `types/` : Tempat definisi tipe data TypeScript.
+Gunakan struktur folder ini di dalam folder `src/` agar konsisten:
+*   `features/` : Logika per modul (Login, Quiz, dsb).
+*   `components/` : Komponen UI global.
+*   `lib/` : Konfigurasi library (Axios instance).
+*   `types/` : Definisi tipe data.
 
 ---
 
 ## 4. Cara Menjalankan
-Untuk menjalankan aplikasi di browser saat sedang coding:
+Untuk menjalankan aplikasi:
 ```bash
-npm run dev
+yarn dev
 ```
 
-Untuk membangun aplikasi untuk produksi:
+Untuk membangun aplikasi (build):
 ```bash
-npm run build
+yarn build
 ```
 ---
-*Panduan ini dibuat sebagai referensi standar pengembangan aplikasi.*
+*Panduan ini diperbarui menggunakan Yarn sesuai dengan standar proyek saat ini.*
