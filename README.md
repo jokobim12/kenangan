@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Panduan Instalasi & Teknologi Proyek (React JS)
 
-## Getting Started
+Dokumen ini berisi panduan teknis untuk membuat aplikasi baru dengan teknologi yang sama dengan sistem ini.
 
-First, run the development server:
+---
 
+## 1. Ringkasan Teknologi
+Aplikasi ini menggunakan stack **React JS** yang modern dengan konfigurasi sebagai berikut:
+*   **Framework**: React JS (v18)
+*   **Bahasa**: TypeScript (File `.tsx`)
+*   **Build Tool**: Vite (Sangat cepat untuk development)
+*   **Platform Mobile**: Capacitor (Hybrid - mengubah web ke Android/iOS)
+
+---
+
+## 2. Langkah-Langkah Instalasi (Step-by-Step)
+
+### Step 1: Membuat Proyek Base
+Buka terminal dan jalankan perintah berikut untuk membuat proyek dengan template React + TypeScript:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm create vite@latest nama-aplikasi-baru -- --template react-ts
+cd nama-aplikasi-baru
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Step 2: Install Library UI & Styling
+Untuk tampilan menggunakan Mantine UI (v6) dan Tailwind CSS:
+```bash
+# Install Mantine UI & Emotion (CSS-in-JS)
+npm install @mantine/core@6 @mantine/hooks@6 @mantine/form@6 @mantine/notifications@6 @emotion/react
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Install & Init Tailwind CSS
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Step 3: Install Library Logika & API
+Untuk menangani navigasi, pemanggilan API, dan animasi:
+```bash
+# React Router (Navigasi), React Query (API Management), Axios (HTTP Client)
+npm install @tanstack/react-query axios react-router-dom
 
-## Learn More
+# Framer Motion (Animasi) & Dayjs (Format Tanggal)
+npm install framer-motion dayjs
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Step 4: Install Plugin Mobile (Capacitor)
+Jika aplikasi ini ingin dijadikan aplikasi Android atau iOS:
+```bash
+# Install Core Capacitor
+npm install @capacitor/core @capacitor/cli @capacitor/android
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Inisialisasi Capacitor
+npx cap init
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 3. Struktur Folder Rekomendasi
+Agar sama dengan sistem yang sekarang, gunakan struktur folder seperti ini di dalam folder `src/`:
+*   `features/` : Tempat menyimpan logika per fitur (Contoh: Login, Absensi, Profile).
+*   `components/` : Tempat komponen yang bisa dipakai berulang kali (Button, Navbar).
+*   `lib/` : Tempat file konfigurasi (Axios instance, Query Client).
+*   `types/` : Tempat definisi tipe data TypeScript.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 4. Cara Menjalankan
+Untuk menjalankan aplikasi di browser saat sedang coding:
+```bash
+npm run dev
+```
+
+Untuk membangun aplikasi untuk produksi:
+```bash
+npm run build
+```
+---
+*Panduan ini dibuat sebagai referensi standar pengembangan aplikasi.*
