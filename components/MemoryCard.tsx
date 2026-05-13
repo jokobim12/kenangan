@@ -14,18 +14,17 @@ const MemoryCard: React.FC<MemoryCardProps> = ({ memory }) => {
   return (
     <Link href={`/memories/${memory.id}`} style={{ height: '100%' }}>
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        whileHover={{ y: -10 }}
-        className="glass"
+        whileHover={{ y: -5 }}
+        className="card"
         style={{
           overflow: 'hidden',
           cursor: 'pointer',
-          transition: 'var(--transition)',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
         }}
       >
         <div style={{ position: 'relative', width: '100%', aspectRatio: '4/3', overflow: 'hidden' }}>
@@ -33,26 +32,33 @@ const MemoryCard: React.FC<MemoryCardProps> = ({ memory }) => {
             src={memory.image_url || '/placeholder.jpg'}
             alt={memory.title}
             fill
-            style={{ objectFit: 'cover', transition: 'transform 0.5s ease' }}
-            className="card-image"
+            style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
           />
           <div style={{
             position: 'absolute',
-            top: '1rem',
-            left: '1rem',
-            padding: '0.2rem 0.8rem',
+            top: '0.8rem',
+            left: '0.8rem',
+            padding: '0.25rem 0.7rem',
             fontSize: '0.7rem',
             fontWeight: 600,
             background: 'var(--accent)',
-            color: '#000',
-            borderRadius: '20px'
+            color: '#fff',
+            borderRadius: '20px',
           }}>
             {new Date(memory.date).getFullYear()}
           </div>
         </div>
-        <div style={{ padding: '1.5rem' }}>
-          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.2rem' }}>{memory.title}</h3>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+        <div style={{ padding: '1.2rem 1.4rem' }}>
+          <h3 style={{ marginBottom: '0.4rem', fontSize: '1.1rem', fontWeight: 600 }}>{memory.title}</h3>
+          <p style={{
+            color: 'var(--text-muted)',
+            fontSize: '0.85rem',
+            display: '-webkit-box',
+            WebkitLineClamp: 2,
+            WebkitBoxOrient: 'vertical',
+            overflow: 'hidden',
+            lineHeight: 1.5,
+          }}>
             {memory.description}
           </p>
         </div>

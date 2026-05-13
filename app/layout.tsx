@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 import PageTransition from "@/components/PageTransition";
+import { AuthProvider } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "Kenangan - Koleksi Momen Berharga",
@@ -16,12 +17,14 @@ export default function RootLayout({
   return (
     <html lang="id">
       <body className="mobile-app-shell">
-        <div className="safe-bottom">
-          <PageTransition>
-            {children}
-          </PageTransition>
-        </div>
-        <BottomNav />
+        <AuthProvider>
+          <div className="safe-bottom">
+            <PageTransition>
+              {children}
+            </PageTransition>
+          </div>
+          <BottomNav />
+        </AuthProvider>
       </body>
     </html>
   );

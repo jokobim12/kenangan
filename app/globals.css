@@ -1,18 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  --background: #fdfdfb; /* Putih bersih dengan sedikit sentuhan hangat */
+  --background: #fdfdfb;
   --foreground: #1c1c1c;
-  --accent: #b8860b;    /* Emas Klasik (Dark Goldenrod) */
-  --accent-muted: rgba(184, 134, 11, 0.1);
+  --accent: #b8860b;
+  --accent-light: #d4a843;
+  --accent-muted: rgba(184, 134, 11, 0.08);
   --card-bg: #ffffff;
   --card-border: rgba(0, 0, 0, 0.06);
-  --card-hover-border: rgba(184, 134, 11, 0.3);
-  --text-muted: #707070;
+  --card-hover-border: rgba(184, 134, 11, 0.25);
+  --text-muted: #8a8a8a;
   --font-outfit: 'Outfit', sans-serif;
-  --glass-bg: rgba(253, 253, 251, 0.85);
-  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  --shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+  --transition: all 0.3s ease;
+  --shadow: 0 2px 8px rgba(0,0,0,0.04);
+  --radius: 12px;
 }
 
 * {
@@ -36,44 +37,32 @@ a {
   text-decoration: none;
 }
 
-/* Premium Card Style (White Theme) */
-.glass {
+/* Card Style - Clean, no blur */
+.card {
   background: var(--card-bg);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--card-border);
-  border-radius: 24px;
-  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  transition: var(--transition);
 }
 
-.glass-nav {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+.card:hover {
+  border-color: var(--card-hover-border);
+}
+
+/* Nav Style */
+.nav-bar {
+  background: var(--background);
   border-bottom: 1px solid var(--card-border);
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in {
-  animation: fadeIn 0.8s ease forwards;
-}
-
-/* Gradient Text (Gold focus) */
-.gradient-text {
-  background: linear-gradient(135deg, #8b6508 0%, var(--accent) 50%, #d4af37 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Gold accent text - no gradient, just solid gold */
+.accent-text {
+  color: var(--accent);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -97,14 +86,14 @@ a {
 }
 
 .section-padding {
-  padding: 7rem 0;
+  padding: 5rem 0;
 }
 
 /* Grid Utilities */
 .memory-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2.5rem;
+  gap: 2rem;
 }
 
 @media (max-width: 640px) {
@@ -114,7 +103,7 @@ a {
   }
 }
 
-/* Mobile App Layout Utilities */
+/* Mobile App Layout */
 .mobile-app-shell {
   min-height: 100vh;
   display: flex;
@@ -122,7 +111,7 @@ a {
 }
 
 .safe-bottom {
-  padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  padding-bottom: calc(75px + env(safe-area-inset-bottom));
 }
 
 .bottom-nav {
@@ -136,17 +125,15 @@ a {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 75px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(25px);
+    height: 70px;
+    background: var(--background);
     border-top: 1px solid var(--card-border);
     justify-content: space-around;
     align-items: center;
     z-index: 1000;
     padding-bottom: env(safe-area-inset-bottom);
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.03);
   }
-  
+
   .desktop-nav {
     display: none !important;
   }
