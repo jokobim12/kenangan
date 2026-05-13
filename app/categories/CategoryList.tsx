@@ -72,7 +72,7 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories, selected, onSel
           <option value="">Pilih Kategori</option>
           {categories.map((cat) => (
             <option key={cat.id} value={cat.name}>
-              {cat.icon} {cat.name}
+              {cat.name}
             </option>
           ))}
         </select>
